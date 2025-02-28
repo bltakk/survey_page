@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос</title>
+    <script>
+        function submitAnswers() {
+            let answer1 = document.getElementById("q1").value;
+            let answer2 = document.getElementById("q2").value;
+            let answer3 = document.getElementById("q3").value;
+
+            if (answer1 && answer2 && answer3) {
+                // Координаты из Яндекс.Карт (замени на нужные)
+                let latitude = 55.751244;
+                let longitude = 37.618423;
+                let yandexLink = `https://yandex.ru/maps/?ll=${longitude},${latitude}&z=14`;
+
+                document.getElementById("result").innerHTML = `
+                    <p>Спасибо за ответы! Вот ваши координаты:</p>
+                    <a href="${yandexLink}" target="_blank">Открыть в Яндекс.Картах</a>
+                `;
+            } else {
+                alert("Пожалуйста, ответьте на все вопросы.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Ответьте на 3 вопроса</h2>
+    <label for="q1">Вопрос 1:</label>
+    <input type="text" id="q1"><br><br>
+
+    <label for="q2">Вопрос 2:</label>
+    <input type="text" id="q2"><br><br>
+
+    <label for="q3">Вопрос 3:</label>
+    <input type="text" id="q3"><br><br>
+
+    <button onclick="submitAnswers()">Отправить</button>
+
+    <div id="result" style="margin-top: 20px;"></div>
+</body>
+</html>
